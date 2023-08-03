@@ -4,7 +4,9 @@ You must read fully and carefully the assignment specification and instructions 
 
 * **Course:** [COMP90054 AI Planning for Autonomy](https://handbook.unimelb.edu.au/subjects/comp90054) @ Semester 2, 2023
 * **Instructor:** Dr. Nir Lipovetzky and Prof. Adrian Pearce
-* **Deadline:** Friday 18th August, 2023 @ 11:59pm (end of Week 4)
+* **Please note that we have two deadlines!**
+* **Code Deadline:** Wednesday 16th August, 2023 @ 11:59pm 
+* **Self-Evaluation Deadline:** Friday 18th August, 2023 @ 11:59pm (end of Week 4)
 * **Course Weight:** 10%
 * **Assignment type:**: Individual (you can work with another student on the code, but submit your own repo and self-evaluation)
 * **ILOs covered:** 1, 2, and 3
