@@ -91,7 +91,7 @@ Your task contains programming excercises with increasing difficulty. This is wh
     *  [Part 1](#part-1-3-marks)
     *  [Part 2](#part-2-3-marks)
     *  [Part 3](#part-3-4-marks)
-* [Self Evaluation Task (10 marks)](#self-evaluation-task)
+* [Self Evaluation Task (10 marks)](#self-evaluation-task-(10-Marks))
 * [Submission Instruction](#submission-instructions)
 
 
