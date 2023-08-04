@@ -298,7 +298,7 @@ This repository serves as a start code for you to carry out your solution for [P
     * Note that a tag is **NOT** a branch, so do not just create a branch called "submission" as that will not amount to tagging.
     * Note that a tag is **NOT** a commit message, so please make sure you can find it in your repo page -> tags
     * It is **case-sensitive**.
-3. Complete the [SELFEV.md](SELFEV.md) file with your details of the submission.
+3. Complete the [SELFEV.md](SELFEV.md) file with your details of the submission. **Please make sure you commit your self-evaluation to the master/main branch.**
 4. **Make sure you fill in the [submission certification form](https://forms.gle/imXrRR6HUcyKe5uaA)**.
 <!-- 4. Fill the [Assignment 1 Certification Form](https://forms.gle/3W8ntjbW6Qq6NMvZA). -->
 
