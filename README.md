@@ -4,7 +4,7 @@ You must read fully and carefully the assignment specification and instructions 
 
 * **Course:** [COMP90054 AI Planning for Autonomy](https://handbook.unimelb.edu.au/subjects/comp90054) @ Semester 2, 2023
 * **Instructor:** Dr. Nir Lipovetzky and Prof. Adrian Pearce
-* **Please note that we have two deadlines!**
+* **Please note that we have two deadlines**
 * **Code Deadline:** Wednesday 16th August, 2023 @ 11:59pm 
 * **Self-Evaluation Deadline:** Friday 18th August, 2023 @ 11:59pm (end of Week 4)
 * **Course Weight:** 10%
@@ -32,11 +32,40 @@ Research shows that grades and rubrics have three reliable effects on students i
 
 How will a student know if they are doing well? They will receive feedback on assessment throughout the semester. Feedback will be qualitative with broad ratings: needs further work; good; or outstanding; but these ratings will NOT be used for grading. Our detail feedback will be focused on your self-evaluation to facilitate and maximise your learning. 
 
-#### Contract grading
+<!--### Contract grading -->
+
+Consider the following:
+
+- You have a good idea of what marks you will get prior to receiving them through our automated tests, this self-feedback approach means that if you want a higher mark, you know what you may have to do.
+
+- Tell us what you tried and didn't work, tell us what you learned while coming up with the solution, tell us why your solution doesn't pass a test, and how would you fix it if you had more time. All this reflection and evaluation give us better tools to assess your learning and provide you with useful feedback.
+
+- Since the assessment is self-directed, you understand well what your code is meant to do and the important lessons you acquired and want to convey with your code to us. It's easier for you to spend 10 - 20 hours with your code and come up with a comprehensive assessment than one tutor to do this for 30 - 50 students.
+
+Some of the possible reasons for mark misalignment of ungrading:
+
+- You're applying the knowledge you've learned to the task, *it is possible you've missed something critical*, even if you receive feedback about your assignment, the level of importance of each error or issue may not be clear. 
+
+- *Perception of feedback length vs lost marks*. Contrast how seeing you lost 2 marks for returning suboptimal solutions suggests it is very wrong even with a small bit of feedback, and how seeing two pages of comments for improvements but no mark deduction suggests that there's lots to improve, but the quality of your solution is still ultimately good for someone early on their AI journey. Concentrate on the feedback. As a rule of thumb, give a good overview of your learning in your self-evaluation, It will significantly help tutors to provide feedback on your learning, which is what you want at this stage.
+
+- In the ungrading process, *you'll likely need to develop methods for verifying the correctness of your results*, not relying only on the more centralised and inflexible nature of automated tests approach. This is often extremely valuable in and of itself, as it forces you to design tests for your code, a vital principle in code development. That said, the centralised automated tests should give you a grounding sense of the correctness of your code.
+
+#### Length of the Self-Evaluation
+
+There's a tendency to conflate writing a lot for the self evaluation as being positive. On the contrary, be concise, and to the point. Practice your ability to synthesise important information, it is important for your communication skills. A self-assessment can be short AND good. There is no need to write pages of text -- just justify why you did a good job and learnt things. 
+
+#### Final words (about ungrading)
+The objective is to reflect on your own learning, and take more risks, as you can justify it in your evaluation. In our positive experience with ungrading last semester in COMP90054, and corroborated by [research](https://www.jessestommel.com/how-to-ungrade/) (see bibliography, e.g. [Teaching more by grading less](https://www.lifescied.org/doi/full/10.1187/cbe.cbe-14-03-0054)), reasons people liked ungrading are chiefly:
+
+- Independence and autonomy: people felt more responsible for their own learning and appreciated the additional autonomy and independence that ungrading provided.
+
+- Reduced the stress of trying to get everything right and figure out what the staff wanted to see.
+
+- Allowed people to explore and take a few more risks, because if they failed, learning still occurred.
 
 
 #### Collaboration
-Assignments 1 can be completed individually or in pairs. We encourage pairs to work together to learn from each other; not to simple split the tasks for efficiency. But we will not monitor this – it is your responsibility. You can submit different solutions, we just want to encourage collaboration.
+Assignment 1 can be completed individually or in pairs. We encourage pairs to work together to learn from each other; not to simple split the tasks for efficiency. But we will not monitor this – it is your responsibility. You can submit different solutions, we just want to encourage collaboration.
 
 <!-- Each submission will contain an individual short self-reflection. -->
 For the student works in pair, you must submit an individual short self evaluation ([SELFEV.md](SELFEV.md)). In addition, you can either submit the same coding solution (both need to submit in their own repo using tag), or submit different coding solution. 
@@ -52,15 +81,17 @@ Who knows better about whether you have learnt from this assignment other than y
 
 Each submission will contain a short self-reflection on what the student learnt, how they approached the tasks (including writing new tests) and will give the student a chance to argue that, even though they didn’t complete a task, they tried and learnt from it. 
 
+More generally, In the past we saw several people either not submitting a self evaluation or not really taking the time to reflect on their learning. In this assignment, we make the expectations clearer: **students are marked based on their self evaluation.**
+
 <!-- We will provide the feedback of your code, which from running the autograder on the server.  -->
 Your task contains programming excercises with increasing difficulty. This is where we give students control over how much assessment they want to complete or have the time to complete.
 * [Programming Tasks](#programming-tasks):
     *  [Practice](#practice)
     *  [Part 0 (0 marks)](#part-0-0-mark-but-critical)
-    *  [Part 1 (3 marks)](#part-1-3-marks)
-    *  [Part 2 (3 marks)](#part-2-3-marks)
-    *  [Part 3 (4 marks)](#part-3-4-marks)
-* [Self Evaluation Task](#self-evaluation-task)
+    *  [Part 1](#part-1-3-marks)
+    *  [Part 2](#part-2-3-marks)
+    *  [Part 3](#part-3-4-marks)
+* [Self Evaluation Task (10 marks)](#self-evaluation-task)
 * [Submission Instruction](#submission-instructions)
 
 
@@ -111,7 +142,7 @@ This is a great way to test that you understand the submission instructions corr
 * Please tag your solution with `test-submission`. If you are not familiar with tag, please check [tag hints](#git-hints-on-tags)
 * We are going to run your code in our server. You can check your result from this [link](http://comp90054.ml/) after a few minutes. This can test your code for part 1, 2 and 3.
 
-#### Part 1 (3 marks)
+#### Part 1 
 
 Implement the **Enforced Hill Climbing (EHC) algorithm** discussed in lectures, using Manhattan Distance as the heuristic, by inserting your code into the template indicated by comment ```***YOUR CODE HERE FOR TASK 1***```. You can see the code location following this link: [search.py#L150](search.py#L150).
 
@@ -124,7 +155,7 @@ python pacman.py -l mediumMaze -p SearchAgent -a fn=ehc,heuristic=manhattanHeuri
 
 Other layouts are available in the [layouts](layouts/) directory, and you can easily create you own. When you use the `autograder` (see section [cheking submission](#checking-your-submission) ), it will try to validate your solution by looking for an exact match with your output. The successors list are expected to be visited in the original order given by the API. 
 
-#### Part 2 (3 marks)
+#### Part 2
 
 In this part we will help you prove to yourself that you have all the ingredients to pick up many new search algorithms, tapping to knowledge you acquired in the lectures and tutorials.
 
@@ -160,9 +191,9 @@ succs = problem.getSuccessors(state)
 succs.reverse()
 ```
 
-#### Part 3 (4 marks)
+#### Part 3
 
-This part involves solving a more complicated problem. You will be able to model the problem, using the **BAE\* algorithm** from part 2 and design a heuristic function that can guide the search algorithm. 
+This part involves solving a more complicated problem. You will be able to model the problem, using the **BAE\* algorithm** from part 2 and design a heuristic function (optionally) that can guide the search algorithm. 
 
 Just like in Q7 of the Berkerley Pacman framework, you will be required to create an agent that eats all the food (dots) in a maze. 
 
@@ -187,7 +218,7 @@ Tips for your implementation:
 - Although a heuristic function is not compulsory, however, a good heuristic function is going to improve your code's running time. We would recommend to try different heuristics to compare the running time and node expansion numbers. Start with the easiest one. 
 - Running time for staff's code with zero heuristic on the trickySearch is **66 second** and on the mediumCorners is **30 seconds**.  This will give you a good guide for comparing the expected performance of your solution.
 > **Note**
-> We encourage you to test your submission on **new layouts and share them publicly** in this [ED Megathread](https://edstem.org/au/courses/10995/discussion/1219428) to enable other students to test their submissions on these layouts as well. You can start threads to discuss and compare performance with other students.
+> We encourage you to test your submission on **new layouts and share them publicly** in this [ED Megathread](https://edstem.org/au/courses/12628/discussion/95308) to enable other students to test their submissions on these layouts as well. You can start threads to discuss and compare performance with other students.
 
 You should be able to test your program by running the following command (in one line):
 
@@ -200,10 +231,14 @@ The `autograder` seeks an optimal solution length within the time budget for eac
 
 You will see in first person the balance between 1) how informed you make your heuristic (it should expand less nodes in general), and 2) the overall runtime. As you can see, sometimes it may be preferable to have a cheaper less informed heuristic, even if you end up expanding more nodes.
 
-### Self Evaluation Task
-You need to assign your marks for part 1 (3 marks), part 3 (3 marks) and part 3 (4 marks) based on your code performance and your own programming and learning experiences. 
+### Self Evaluation Task (10 Marks)
+We highly recommend updating the self-evaluation as you complete each part, as you'll have fresh in your mind the learning lessons you acquired. Treat the self-evaluation as a [living document](https://en.wikipedia.org/wiki/Living_document). 
 
-Please fill in the self-evaluation section of the [SELFEV.md](SELFEV.md).
+At the end, it is recommended to look at all the learning journey you had across the assignment. Once you submit your final code, We will disclose the hidden tests used for automated feedback, so you can incorporate their analysis into your self-evaluation.  
+
+You need to assign your marks for part 1 (3 marks), part 2 (3 marks) and part 3 (4 marks) based on your code performance due to your programming, and learning experiences. Consider aspects such as coding lessons/challenges, heuristic properties, search algorithms subtleties, etc.
+
+Please fill in the self-evaluation section of the [SELFEV.md](SELFEV.md). 
 
 ## Marking criteria
 
@@ -215,6 +250,10 @@ You must **follow good SE practices**, including good use of git during your dev
 * _Commit early, commit often:_ single or few commits with all the solution or big chucks of it, is not good practice.
 * _Use meaningful commit messages:_ as a comment in your code, the message should clearly summarize what the commit is about. Messages like "fix", "work", "commit", "changes" are poor and do not help us understand what was done.
 * _Use atomic commits:_ avoid commits doing many things; let alone one commit solving many questions of the project. Each commit should be about one (little but interesting) thing. 
+
+We will revise marks up or down if they are strongly uncalibrated. That said, in our experience, this is the exception rather than the rule.
+
+If you are new to [GIT, check out this 100 seconds video summary](https://www.youtube.com/watch?v=hwP7WQkmECE) and read this [online book section about version control](https://cis-projects.github.io/project_based_course_notes/topics/version_control.html) developed by the [team](https://github.com/cis-projects/project_based_course_notes) running the software project in CIS .
 
 ## Checking your submission
 

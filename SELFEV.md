@@ -25,7 +25,7 @@ your full name - your student number - your canvas student login
 0
 > Please replace the above 0 with the mark you think you earned for this part. Consider how many (yours/ours) tests pass, the quality of your code, what you learnt, and [mainly for the final task] the quality of the tests that you wrote
 #### Code Performance
-This graph is just an example of how you can include your plots in markdown.
+This graph is just an example of how you can include your plots in markdown. **Please remove it in your final submission**
 
 ![Your result](img/scientific_paper_graph_quality.png)
 > Please explain the code performance of your solution. You can create a video, include figures, tables, etc. Make sure to complement them with text explaining the performance.
@@ -51,7 +51,6 @@ This graph is just an example of how you can include your plots in markdown.
 0
 > Please replace the above 0 with the mark you think you earned for this part. Consider how many (yours/ours) tests pass, the quality of your code, what you learnt, and [mainly for the final task] the quality of the tests that you wrote.
 #### Code Performance
-![Your result](img/scientific_paper_graph_quality.png)
 > Please explain the code performance of your solution. You can create a video, include figures, tables, etc. Make sure to complement them with text explaining the performance.
 
 #### Learning and Challenges
@@ -75,7 +74,6 @@ This graph is just an example of how you can include your plots in markdown.
 0
 > Please replace the above 0 with the mark you think you earned for this part. Consider how many (yours/ours) tests pass, the quality of your code, what you learnt, and [mainly for the final task] the quality of the tests that you wrote
 #### Code Performance
-![Your result](img/scientific_paper_graph_quality.png)
 > Please explain the code performance of your solution. You can create a video, include figures, tables, etc. Make sure to complement them with text explaining the performance.
 
 #### Learning and Challenges
