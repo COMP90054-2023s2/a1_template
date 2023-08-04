@@ -2,7 +2,7 @@
 
 **Course:** COMP90054 AI Planning for Autonomy
 
-**Semester:** Semester 1, 2023
+**Semester:** Semester 2, 2023
 
 
 **Student:**
