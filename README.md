@@ -294,7 +294,7 @@ This repository serves as a start code for you to carry out your solution for [P
 
 1. Check that your solution runs on Python 3.8 and that your source code does not include personal information, like your student number or name. 
 2. Tag the commit that contains your final code with tag `submission`. 
-    * The commit and tagging should be dated after the deadline.
+    * The commit and tagging should be dated before the deadline.
     * Note that a tag is **NOT** a branch, so do not just create a branch called "submission" as that will not amount to tagging.
     * Note that a tag is **NOT** a commit message, so please make sure you can find it in your repo page -> tags
     * It is **case-sensitive**.
