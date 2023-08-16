@@ -791,71 +791,88 @@ class BidirectionalFoodSearchProblem:
     def __init__(self, startingGameState):
         self._expanded = 0 # DO NOT CHANGE
         self.startingGameState = startingGameState
-        # You might need to use the following variables
+        "You might need to use the following variables"
         self.init_pos = startingGameState.getPacmanPosition()
         self.foodGrid = startingGameState.getFood()
         self.walls = startingGameState.getWalls()
-        # self.emptyFoodGrid = Grid(self.foodGrid.width,self.foodGrid.height)
+        # self.capsulesGrid = Grid(self.foodGrid.width,self.foodGrid.height)
 
-        """You code here for Task 3:"""
-        # Define your initial state
-        self.start = ()
-        # And if you have anything else want to initialize:
         
-        
+        # If you have anything else want to initialize
+        self.start = (self.init_pos, self.foodGrid)
+
     def getStartState(self):
-        """You code here for Task 3:"""
         # You MUST implement this function to return the initial state
         return self.start
     
     def getGoalStates(self):
         goal_states = []
-        """You code here for Task 3:"""
-        # You must generate all goal states
+        food_list = self.foodGrid.asList()
         
+        for x,y in food_list:
+            food = Grid(self.foodGrid.width,self.foodGrid.height)
+            # food[x][y]=True
+            goal_states.append(((x,y),food))
         return goal_states
 
     def isGoalState(self, state):
-        goal_achieved = False
-        """You code here for Task 3:"""
         # You MUST implement this function to return True or False
-        # to indicate whether the give state is one of the goal state or not        
-        
-        return goal_achieved
+        # to indicate whether the give state is one of the goal state or not
+        return state[1].count() == 0
 
     def getSuccessors(self, state):
+        "Returns successor states, the actions they require, and a cost of 1."
         # You MUST implement this function to return a list of successors
         # A successor is in the format of (next_state, action, cost)
         successors = []
         self._expanded += 1 # DO NOT CHANGE
         
         """You code here for Task 3:"""
-
-        # There are four actions might be available:
-        # for direction in [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]:
-        #     dx, dy = Actions.directionToVector(direction)
+        pos, foodGrid = state
+        x,y=pos
+        # There are four actions might be available
+        for direction in [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]:
+            dx, dy = Actions.directionToVector(direction)
             
+            new_x, new_y = int(x + dx), int(y + dy)
+            if not self.walls[new_x][new_y]:
             
-            
+                newFood = foodGrid.copy()
+                newFood[new_x][new_y] = False
+                successors.append((((new_x,new_y),newFood),direction,1))
+        
+        
         return successors
 
     def getBackwardsSuccessors(self, state):
-        # You MUST implement this function to return a list of backwards successors
+        "Returns successor states, the actions they require, and a cost of 1."
+        # You MUST implement this function to return a list of successors
         # A successor is in the format of (next_state, action, cost)
-        # DO reverse your action before you return it
         successors = []
         self._expanded += 1 # DO NOT CHANGE
         
         """You code here for Task 3:"""
+        
+        pos, foodGrid = state
+        x,y=pos
+        # There are four actions might be available
+        for direction in [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]:
+            dx, dy = Actions.directionToVector(direction)
 
-        # There are four actions might be available:
-        # for direction in [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]:
-        #     dx, dy = Actions.directionToVector(direction)
+            new_x, new_y = int(x + dx), int(y + dy)
+            if not self.walls[new_x][new_y]:
             
-            
-            
+                newFood = foodGrid.copy()
+                # newFood[x][y] = self.foodGrid[x][y]
+                successors.append((((new_x,new_y),newFood),Actions.reverseDirection(direction),1))
+                
+                # if the food is not generated, then we can generated the food
+                # or not generated the food, which covered by above successor
+                if not newFood[x][y] and self.foodGrid[x][y]:
+                    newFood2 = foodGrid.copy()
+                    newFood2[x][y] = self.foodGrid[x][y]
+                    successors.append((((new_x,new_y),newFood2),Actions.reverseDirection(direction),1))
         return successors
-
 
     
     def getCostOfActions(self, actions):
@@ -866,12 +883,14 @@ class BidirectionalFoodSearchProblem:
         "*** YOUR CODE HERE for Task 3 (optional) ***"
         cost = 0
 
-        # for action in actions:
-        #     dx, dy = Actions.directionToVector(action)
+        for action in actions:
+            dx, dy = Actions.directionToVector(action)
+            cost = cost+1
         
         return cost
 
-
+# smallCorners 11841
+# capsuleA1 247
 def bidirectionalFoodProblemHeuristic(state, problem):
     "*** YOUR CODE HERE for Task 3 ***"
     return 0
@@ -879,3 +898,37 @@ def bidirectionalFoodProblemHeuristic(state, problem):
 def bidirectionalFoodProblemBackwardsHeuristic(state, problem):
     "*** YOUR CODE HERE for Task 3 ***"
     return 0
+
+# smallCorners 9638
+# capsuleA1 184
+def bidirectionalFoodProblemHeuristic1(state, problem):
+    "*** YOUR CODE HERE for Task 3 ***"
+    return len(state[1].asList())
+
+def bidirectionalFoodProblemBackwardsHeuristic1(state, problem):
+    "*** YOUR CODE HERE for Task 3 ***"
+    return len(problem.foodGrid.asList()) - len(state[1].asList())
+
+
+# smallCorners 8377
+# capsuleA1 235
+def bidirectionalFoodProblemHeuristic2(state, problem):
+    "*** YOUR CODE HERE for Task 3 ***"
+    foodGrid = state[1]
+    pos = state[0]
+    max_dis = 0
+    for food_pos in foodGrid.asList():
+        max_dis = max(util.manhattanDistance(food_pos,pos),max_dis)
+    return max(max_dis,len(state[1].asList()))
+
+def bidirectionalFoodProblemBackwardsHeuristic2(state, problem):
+    "*** YOUR CODE HERE for Task 3 ***"
+    foodGrid = state[1]
+    pos = state[0]
+    max_dis = 0
+    
+    for food_pos in problem.foodGrid.asList():
+        if food_pos not in foodGrid.asList():
+            max_dis = max(util.manhattanDistance(food_pos,pos),max_dis)
+    return max(max_dis,len(problem.foodGrid.asList()) - len(state[1].asList()))
+

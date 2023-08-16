@@ -1,0 +1,20 @@
+class: "PacmanBidirectionalSearchTest"
+algorithm: "bae"
+searchProblemClass: "BidirectionalFoodSearchProblem"
+
+layoutName: "trickysmallCorners"
+layout: """
+%%%%%%%%%%%%%%%%%%%%%%
+%.%%        % %     .%
+%    %%%%%%.% %%%%%% %
+%%%%%%     P .%      %
+%    % %%%%%% %%.%%%%%
+% %%%% %         %   %
+%        %%% %%%   % %
+%%%%%%%%%%    %%%%%% %
+%.         %%       .%
+%%%%%%%%%%%%%%%%%%%%%%
+"""
+
+heuristic: "bidirectionalFoodProblemHeuristic"
+backwardsHeuristic: "bidirectionalFoodProblemBackwardsHeuristic"

@@ -4,7 +4,7 @@
 # educational purposes provided that (1) you do not distribute or publish
 # solutions, (2) you retain this notice, and (3) you provide clear
 # attribution to UC Berkeley, including a link to http://ai.berkeley.edu.
-# 
+#
 # Attribution Information: The Pacman AI projects were developed at UC Berkeley.
 # The core projects and autograders were primarily created by John DeNero
 # (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).
@@ -147,30 +147,129 @@ def enforcedHillClimbing(problem, heuristic=nullHeuristic):
     The heuristic function is "manhattanHeuristic" from searchAgent.py.
     It will be pass to this function as second argument (heuristic).
     """
-    "*** YOUR CODE HERE FOR TASK 1 ***"
-    
-    
-    # put the below line at the end of your code or remove it
-    util.raiseNotDefined()
-        
 
-from math import inf as INF   
+    baseline_coord = problem.getStartState()
+    paths = []
+
+    while True:
+        queue = util.Queue()
+        closed = []
+        baseline_h = heuristic(baseline_coord, problem)
+        queue.push((baseline_coord, paths, baseline_h))
+        while not queue.isEmpty():
+            cur_coord, paths, h = queue.pop()
+            if cur_coord not in closed:
+                closed.append(cur_coord)
+                if heuristic(cur_coord, problem) < baseline_h:
+                    if problem.isGoalState(cur_coord):
+                        return paths
+                    baseline_coord = cur_coord
+                    break
+                for next_coord, action, cost in problem.getSuccessors(cur_coord):
+                    queue.push((next_coord, paths+[action], heuristic(next_coord, problem)))
+    util.raiseNotDefined()
+
+
+
 def bidirectionalAStarEnhanced(problem, heuristic=nullHeuristic, backwardsHeuristic=nullHeuristic):
-    
     """
-    Bidirectional global search with heuristic function.
+    Global search with heuristic function.
     You DO NOT need to implement any heuristic, but you DO have to call them.
+    You need two arguments to call, such as heuristic(state,problem)
     The heuristic functions are "manhattanHeuristic" and "backwardsManhattanHeuristic" from searchAgent.py.
-    It will be pass to this function as second and third arguments.
-    You can call it by using: heuristic(state,problem) or backwardsHeuristic(state,problem)
+    It will be pass to this function as second (heuristic) and third (heuristic) arguments.
     """
     "*** YOUR CODE HERE FOR TASK 2 ***"
-    # The problem passed in going to be BidirectionalPositionSearchProblem    
-    
-    
-    # put the below line at the end of your code or remove it
-    util.raiseNotDefined()
 
+    forwardsPQ = util.PriorityQueue()
+    backwardsPQ = util.PriorityQueue()
+    start_state = problem.getStartState()
+    end_states = problem.getGoalStates()
+
+    for end_state in end_states:
+        endNode = (end_state,'',0,[])
+        backwardsPQ.update(endNode,backwardsHeuristic(end_state,problem)- heuristic(end_state,problem))
+
+    startNode = (start_state,'',0,[])
+
+    forwardsPQ.update(startNode,heuristic(start_state,problem)- backwardsHeuristic(start_state,problem))
+
+    l=0
+    u=inf
+
+    myPQs = [forwardsPQ,backwardsPQ]
+
+    # forwardsPQ.push("1",1)
+    # forwardsPQ.push("3",3)
+    # forwardsPQ.push("2",2)
+    # print(forwardsPQ.getMinimumPriority())
+    forwardsClosed = set()
+    backwardsClosed = set()
+
+    myCloseds = [forwardsClosed, backwardsClosed]
+    direction = 0
+    plan = [[],[]]
+    node_expansion = []
+    while not forwardsPQ.isEmpty() and not backwardsPQ.isEmpty():
+        min_f = forwardsPQ.getMinimumPriority()
+        min_p = backwardsPQ.getMinimumPriority()
+        l = (min_f+min_p)*0.5
+        node = myPQs[direction].pop()
+        state,action,gn,path = node
+
+
+        myCloseds[direction].add(state)
+        # print(myPQs[0].heap,myPQs[1].heap)
+        myheap =  myPQs[abs(direction-1)].heap
+        flag = False
+        n_gn = 0
+        paths=[[],[]]
+        paths[direction]=path
+
+        for (p,c,i) in myheap:
+            if i[0] == state:
+                flag= True
+                n_gn = i[2]
+                paths[abs(direction-1)] = i[3]
+                break
+
+
+        if flag and n_gn+gn<u:
+            u = gn+n_gn
+            plans = paths
+
+        node_expansion.append((state,l,u))
+        if l>=u:
+
+            forwards_actions = [item[1] for item in plans[0]]
+            backwards_actions = [item[1] for item in plans[1]]
+            # del forwards_actions[0]
+            # del backwards_actions[0]
+            backwards_actions.reverse()
+            plan = forwards_actions + backwards_actions
+            # print(node_expansion)
+            print(plan)
+            return plan
+        succs = []
+        if not direction:
+            succs = problem.getSuccessors(state)
+            for (next_state, next_action, cost) in succs:
+                if next_state not in myCloseds[direction]:
+                    p= cost+gn + heuristic(next_state,problem)+ cost +gn - backwardsHeuristic(next_state,problem)
+                    next_node = (next_state,next_action, gn+cost, path+[(next_state,next_action)])
+                    myPQs[direction].update(next_node,p)
+        else:
+            succs = problem.getBackwardsSuccessors(state)
+            for (next_state, next_action, cost) in succs:
+                if next_state not in myCloseds[direction]:
+                    p= cost+gn + backwardsHeuristic(next_state,problem)+ cost +gn - heuristic(next_state,problem)
+                    next_node = (next_state,next_action, gn+cost, path+[(next_state,next_action)])
+                    myPQs[direction].update(next_node,p)
+        direction = abs(direction -1)
+
+
+
+        
 
 # Abbreviations
 bfs = breadthFirstSearch
@@ -181,5 +280,4 @@ ucs = uniformCostSearch
 
 ehc = enforcedHillClimbing
 bae = bidirectionalAStarEnhanced
-
-
+bae1=bidirectionalAStarEnhanced1
