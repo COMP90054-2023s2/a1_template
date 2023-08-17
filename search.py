@@ -269,7 +269,7 @@ def bidirectionalAStarEnhanced(problem, heuristic=nullHeuristic, backwardsHeuris
 
 
 
-        
+
 
 # Abbreviations
 bfs = breadthFirstSearch
@@ -280,4 +280,3 @@ ucs = uniformCostSearch
 
 ehc = enforcedHillClimbing
 bae = bidirectionalAStarEnhanced
-bae1=bidirectionalAStarEnhanced1
